@@ -12,8 +12,8 @@ public class ProductsServiceFactory
 
     public ProductsService create()
     {
-        // configure Retrofit for the dummyjson website
-        // retrogit objects allows us to crate these services
+        // configure Retrofit for the dummy json website
+        // retrofit objects allows us to crate these services
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://dummyjson.com/")
                 // Configure Retrofit to use Gson to turn the Json into Objects

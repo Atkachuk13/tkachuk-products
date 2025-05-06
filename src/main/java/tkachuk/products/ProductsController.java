@@ -33,6 +33,7 @@ public class ProductsController
                 Image image = ImageIO.read(url);
                 ImageIcon imageIcon = new ImageIcon(image);
                 images[i].setIcon(imageIcon);
+                images[i].putClientProperty("imageURL", url);
             } catch (MalformedURLException e)
             {
                 throw new RuntimeException(e);
