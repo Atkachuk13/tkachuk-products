@@ -1,7 +1,5 @@
 package tkachuk.products;
 
-import io.reactivex.rxjava3.core.Single;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -17,7 +15,7 @@ public class ProductsFrame extends JFrame
     {
         setTitle(("Products"));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(700, 700);
+        setSize(900, 700);
 
         setLayout(new GridLayout(3, 3));
         for (int i = 0; i < labels.length; i++)
@@ -25,13 +23,22 @@ public class ProductsFrame extends JFrame
             final int index = i;
             labels[i] = new JLabel();
 
-            labels[i].addMouseListener(new MouseAdapter() {
+            labels[i].addMouseListener(new MouseAdapter()
+            {
                 @Override
                 public void mouseClicked(MouseEvent e)
                 {
-                    URL imageUrl = (URL) labels[index].getClientProperty("imageURL");
-                    if (imageUrl != null) {
-                        new ProductDisplayFrame(imageUrl);
+                    Product product = (Product) labels[index].getClientProperty("product");
+                    if (product != null)
+                    {
+                        try
+                        {
+                            URL imageUrl = new URL(product.thumbnail);
+                            new ProductsDisplayFrame(imageUrl, product.title, product.description);
+                        } catch (Exception ex)
+                        {
+                            ex.printStackTrace();
+                        }
                     }
                 }
             });

@@ -11,7 +11,7 @@ import java.net.URL;
 public class ProductsController
 {
     private ProductsService service;
-    JLabel[] images;
+    private JLabel[] images;
 
     public ProductsController(ProductsService service, JLabel[] images)
     {
@@ -33,7 +33,7 @@ public class ProductsController
                 Image image = ImageIO.read(url);
                 ImageIcon imageIcon = new ImageIcon(image);
                 images[i].setIcon(imageIcon);
-                images[i].putClientProperty("imageURL", url);
+                images[i].putClientProperty("product", product);
             } catch (MalformedURLException e)
             {
                 throw new RuntimeException(e);
