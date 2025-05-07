@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class ProductsDisplayFrame extends JFrame
 {
-    public ProductsDisplayFrame(URL imageURL, String title, String description)
+    public ProductsDisplayFrame(URL imageUrl, String title, String description)
     {
         setTitle("Product Display");
         setSize(900, 700);
@@ -19,7 +19,7 @@ public class ProductsDisplayFrame extends JFrame
 
         try
         {
-            Image image = ImageIO.read(imageURL);
+            Image image = ImageIO.read(imageUrl);
             ImageIcon icon = new ImageIcon(image.getScaledInstance(400, 400, Image.SCALE_SMOOTH));
             JLabel imageLabel = new JLabel(icon);
             imageLabel.setHorizontalAlignment(JLabel.LEFT);
